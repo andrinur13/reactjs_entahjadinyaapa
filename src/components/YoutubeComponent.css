@@ -1,0 +1,8 @@
+.wrapper {
+  padding: 10px;
+  display: inline-block;
+}
+
+.bg-card {
+    background-color: #ededed;
+}
