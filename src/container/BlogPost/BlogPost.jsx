@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component, Fragment } from 'react'
 import Post from '../../components/Blog/Post';
 
@@ -7,13 +8,16 @@ class BlogPost extends Component {
     }
 
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(json => {
-            this.setState({
-                post: json
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {
+                if(response.status !== 200) {
+                    console.log('error');
+                } else {
+                    this.setState({
+                        post: response.data
+                    })
+                }
             })
-        })
     }
 
     render() {
